@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
     <title>RSHAjombang</title>
     <style>
         * {
@@ -71,10 +73,10 @@
         }
 
         .logo-container {
-            width: 120px;
-            height: 120px;
+            width: 145px;
+            height: 145px;
             background: white;
-            border-radius: 50%;
+            border-radius: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -85,14 +87,14 @@
         .logo {
             width: 90px;
             height: 90px;
-            background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
-            border-radius: 50%;
+            background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
+            border-radius: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             font-weight: bold;
-            font-size: 14px;
+            font-size: 20px;
         }
 
         .hospital-name {
@@ -200,52 +202,61 @@
     </style>
 </head>
 <body>
-    <div class="card">
-        <div class="settings-btn">
-            <span class="settings-icon">⚙️</span>
-        </div>
-
-        <div class="content">
-            <div class="logo-container">
-                <div class="logo">
-                    RSHA
-                </div>
-            </div>
-
-            <h1 class="hospital-name">RSHAjombang</h1>
-
-            <a href="https://api.whatsapp.com/send?phone=6282139748501&text=" class="instagram-btn">
-                WhatsApps
-                <span class="more-icon">⋮</span>
-            </a>
-            <a href="https://instagram.com/rshajombang" class="instagram-btn">
-                Instagram
-                <span class="more-icon">⋮</span>
-            </a>
-            <a href="https://instagram.com/rshajombang" class="instagram-btn">
-                Instagram
-                <span class="more-icon">⋮</span>
-            </a>
-            <a href="https://instagram.com/rshajombang" class="instagram-btn">
-                Instagram
-                <span class="more-icon">⋮</span>
-            </a>
-
-            <div class="spacer"></div>
-
-
-            <i class="fa-solid fa-file-circle-exclamation"></i>
-            <a href="#" class="linktree-btn">Lokasi</a>
-
-            <div class="footer">
-                <a href="#">Report</a>
-                <span>·</span>
-                <a href="#">Privacy</a>
-            </div>
-        </div>
+  <div class="card">
+    <!-- Tombol Pengaturan -->
+    <div class="settings-btn">
+      <span class="settings-icon">⚙️</span>
     </div>
-</body>
 
+    <!-- Konten Utama -->
+    <div class="content">
+      <!-- Logo -->
+      <div class="logo-container">
+        <div class="logo">
+          <img src="./logo.png" alt="Logo RSHAjombang">
+        </div>
+      </div>
+
+      <!-- Nama Rumah Sakit -->
+      <h1 class="hospital-name">RSHAjombang</h1>
+
+      <!-- Tombol Sosial Media -->
+      <a href="https://api.whatsapp.com/send?phone=6282139748501&text=" class="instagram-btn">
+        <i class="fa-brands fa-whatsapp"></i> WhatsApp
+      </a>
+
+      <a href="https://instagram.com/rshajombang" class="instagram-btn">
+        <i class="fa-brands fa-instagram"></i> Instagram
+      </a>
+
+      <a href="https://www.tiktok.com/@rshajombang" class="instagram-btn">
+        <i class="fa-brands fa-tiktok"></i> TikTok
+      </a>
+
+      <a href="https://wa.me/6282139748501?text=Ambulan" class="instagram-btn">
+        <i class="fa-solid fa-truck-medical"></i> Ambulan
+      </a>
+
+      <a href="https://wa.me/6282139748501?text=Pengaduan" class="instagram-btn">
+        <i class="fa-solid fa-comment-dots"></i> Pengaduan
+      </a>
+
+      <div class="spacer"></div>
+
+      <!-- Tombol Lokasi -->
+      <a href="https://maps.app.goo.gl/xxxxx" class="linktree-btn">
+        <i class="fa-solid fa-location-dot"></i> Lokasi
+      </a>
+
+      <!-- Footer -->
+      <div class="footer">
+        <a href="#">Report</a>
+        <span>·</span>
+        <a href="#">Privacy</a>
+      </div>
+    </div>
+  </div>
+</body>
 </html>
 
 
