@@ -298,18 +298,6 @@
   // 🔹 2. Tampilkan Negara Pengunjung
   // =========================
   //fetch('https://ipapi.co/json/')
-fetch('https://ipwhois.app/json/')
-  .then(res => res.json())
-  .then(data => {
-    const countryName = data.country || "Unknown";
-    const countryCode = data.country_code ? data.country_code.toLowerCase() : "un";
-    document.getElementById("flag-container").innerHTML =
-      `<img src="https://flagcdn.com/24x18/${countryCode}.png"> Anda dari <b>${countryName}</b>`;
-  })
-  .catch(() => {
-    document.getElementById("flag-container").innerText = "Gagal memuat data negara.";
-  });
-
 const namespace = "dashboard-rsha";  // nama unik situs
 const key = "visitorcount";
 
@@ -320,11 +308,11 @@ function updateVisitorCount() {
       document.getElementById("visitor-count").textContent = data.value;
     })
     .catch(() => {
-      document.getElementById("visitor-count").textContent = "Error";
+      document.getElementById("visitor-count").textContent = "0";
     });
 }
 
-if (!localStorage.getItem("hasVisited")) {
+function hitVisitor() {
   fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
     .then(res => res.json())
     .then(data => {
@@ -332,16 +320,25 @@ if (!localStorage.getItem("hasVisited")) {
       localStorage.setItem("hasVisited", "true");
     })
     .catch(() => {
+      // jika key belum ada, buat key baru dulu
       fetch(`https://api.countapi.xyz/create?namespace=${namespace}&key=${key}&value=1`)
+        .then(res => res.json())
         .then(() => updateVisitorCount());
     });
+}
+
+// Cek localStorage
+if (!localStorage.getItem("hasVisited")) {
+  hitVisitor();
 } else {
   updateVisitorCount();
 }
 
 
+
     </script>
 </html>
+
 
 
 
