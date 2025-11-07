@@ -1,278 +1,247 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <title>RSHAjombang</title>
+  <style>
+    * {margin: 0; padding: 0; box-sizing: border-box;}
 
-    <title>RSHAjombang</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-image: url("bg.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      padding: 20px;
+    }
 
-        body {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-        display: flex;
-        
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh; /* gunakan 100vh agar penuh 1 layar */
-        background-image: url("bg.jpg");
-        background-repeat: no-repeat;
-        background-size: cover;        /* pastikan gambar memenuhi layar */
-        background-position: center;   /* posisi gambar di tengah layar */
-        background-attachment: fixed;  /* agar background tidak bergeser saat di-scroll */
-        padding: 20px;
-        }
+    .card {
+      width: 100%;
+      max-width: 340px;
+      background: linear-gradient(180deg,#34d399 0%,#10b981 40%,#059669 70%,#047857 100%);
+      border-radius: 32px;
+      padding: 30px;
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+                  rgba(0, 0, 0, 0.12) 0px -12px 30px,
+                  rgba(0, 0, 0, 0.12) 0px 4px 6px,
+                  rgba(0, 0, 0, 0.17) 0px 12px 13px,
+                  rgba(0, 0, 0, 0.09) 0px -3px 5px;
+      position: relative;
+      min-height: 600px;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.5s ease-in-out;
+    }
 
-        .card {
-        width: 100%;
-        max-width: 340px;
-        background: linear-gradient(
-            180deg,
-            #34d399 0%,
-            #10b981 40%,
-            #059669 70%,
-            #047857 100%
-        );
-        border-radius: 32px;
-        padding: 30px;
-        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
-                    rgba(0, 0, 0, 0.12) 0px -12px 30px,
-                    rgba(0, 0, 0, 0.12) 0px 4px 6px,
-                    rgba(0, 0, 0, 0.17) 0px 12px 13px,
-                    rgba(0, 0, 0, 0.09) 0px -3px 5px;
-        position: relative;
-        min-height: 600px;
-        display: flex;
-        flex-direction: column;
+    .card:hover {
+      box-shadow: rgba(0, 0, 0, 0.3) 0px 60px 60px,
+                  rgba(0, 0, 0, 0.2) 0px 10px 30px,
+                  rgba(0, 0, 0, 0.15) 0px 4px 8px;
+    }
 
-        /* ✨ Efek transisi lembut */
-        transition: all 0.5s ease-in-out;
-        }
+    .content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+      padding-top: 40px;
+    }
 
-        /* ✨ Efek saat hover */
-        .card:hover {
-        box-shadow: rgba(0, 0, 0, 0.3) 0px 60px 60px,
-                    rgba(0, 0, 0, 0.2) 0px 10px 30px,
-                    rgba(0, 0, 0, 0.15) 0px 4px 8px;
-        }
+    .logo-container {
+      width: 145px;
+      height: 145px;
+      background: white;
+      border-radius: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 30px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    }
 
-        .content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            flex: 1;
-            padding-top: 40px;
-        }
+    .logo img {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+    }
 
-        .logo-container {
-            width: 145px;
-            height: 145px;
-            background: white;
-            border-radius: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 30px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-        }
+    .hospital-name {
+      color: white;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 40px;
+      text-align: center;
+      letter-spacing: 0.5px;
+    }
 
-        .logo {
-            width: 90px;
-            height: 90px;
-            background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
-            border-radius: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 20px;
-        }
+    .instagram-btn {
+      width: 100%;
+      padding: 18px;
+      background: rgba(255, 255, 255, 0.15);
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      border-radius: 50px;
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-decoration: none;
+      margin-bottom: 20px;
+    }
 
-        .hospital-name {
-            color: white;
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 40px;
-            text-align: center;
-            letter-spacing: 0.5px;
-        }
+    .instagram-btn:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
 
-        .instagram-btn {
-            width: 100%;
-            padding: 18px;
-            background: rgba(255, 255, 255, 0.15);
-            border: 2px solid rgba(255, 255, 255, 0.4);
-            border-radius: 50px;
-            color: white;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            backdrop-filter: blur(10px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            text-decoration: none;
-            margin-bottom: 20px;
-        }
+    .linktree-btn {
+      width: 100%;
+      padding: 16px 32px;
+      background: white;
+      border: none;
+      border-radius: 50px;
+      color: #047857;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      margin-bottom: 20px;
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
+    }
 
-        .instagram-btn:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
+    .linktree-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
 
-        .more-icon {
-            margin-left: auto;
-            font-size: 20px;
-            opacity: 0.8;
-        }
+    .footer {
+      display: flex;
+      justify-content: center;
+      color: white;
+      font-size: 13px;
+    }
 
-        .spacer {
-            flex: 1;
-        }
+    /* 🌍 Tambahan untuk visitor info */
+    .visitor-info {
+      margin-top: 15px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 10px;
+      padding: 8px 14px;
+      text-align: center;
+      color: white;
+      font-size: 13px;
+    }
 
-        .linktree-btn {
-            width: 100%;
-            padding: 16px 32px;
-            background: white;
-            border: none;
-            border-radius: 50px;
-            color: #047857;
-            font-size: 15px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-            margin-bottom: 20px;
-            text-decoration: none;
-            display: inline-block;
-            text-align: center;
-        }
+    .visitor-info img {
+      vertical-align: middle;
+      width: 20px;
+      height: 14px;
+      margin-right: 6px;
+    }
 
-        .linktree-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .footer {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            color: white;
-            font-size: 13px;
-        }
-
-        .footer a {
-            color: white;
-            text-decoration: none;
-            opacity: 0.9;
-            transition: opacity 0.2s;
-        }
-
-        .footer a:hover {
-            opacity: 1;
-            text-decoration: underline;
-        }
-
-        .footer span {
-            opacity: 0.7;
-        }
-
-        @media (max-width: 400px) {
-            .card {
-                max-width: 100%;
-                border-radius: 24px;
-            }
-
-            .hospital-name {
-                font-size: 24px;
-            }
-        }
-
-
-       
-    </style>
+    @media (max-width: 400px) {
+      .card { max-width: 100%; border-radius: 24px; }
+      .hospital-name { font-size: 24px; }
+    }
+  </style>
 </head>
+
 <body>
   <div class="card">
-      <!-- Konten Utama -->
     <div class="content">
-      <!-- Logo -->
       <div class="logo-container">
         <div class="logo">
           <img src="./logo.png" alt="Logo RSHAjombang">
         </div>
       </div>
+
       <h1 class="hospital-name">RS HASYIM ASY'ARI TEBUIRENG</h1>
 
-      <a href="#"  class="instagram-btn" onclick="copyText(event)">
-          <i class="fa-solid fa-phone"></i> 03213088030
-     </a>
+      <a href="#" class="instagram-btn" onclick="copyText(event)">
+        <i class="fa-solid fa-phone"></i> 03213088030
+      </a>
       <a href="https://api.whatsapp.com/send?phone=6282139748501&text=" class="instagram-btn">
         <i class="fa-brands fa-whatsapp"></i> WhatsApp
       </a>
-
       <a href="https://api.whatsapp.com/send/?phone=6281225111533&text&type=phone_number&app_absent=0" class="instagram-btn">
         <i class="fa-solid fa-truck-medical"></i> Ambulan
       </a>
-
       <a href="https://api.whatsapp.com/send/?phone=6282224344438&text&type=phone_number&app_absent=0" class="instagram-btn">
         <i class="fa-solid fa-comment-dots"></i> Pengaduan
       </a>
-
       <a href="https://www.instagram.com/rs.hasyimasyari/?hl=en" class="instagram-btn">
         <i class="fa-brands fa-instagram"></i> Instagram
       </a>
-
       <a href="https://www.facebook.com/rs.hasyimasyari" class="instagram-btn">
         <i class="fa-brands fa-facebook"></i> Facebook
       </a>
-
       <a href="https://www.tiktok.com/@rs.hasyimasyari" class="instagram-btn">
         <i class="fa-brands fa-tiktok"></i> TikTok
       </a>
 
       <div class="spacer"></div>
 
-      <!-- Tombol Lokasi -->
       <a href="https://maps.app.goo.gl/3kSM5VbqRNQEDLLK6" class="linktree-btn">
         <i class="fa-solid fa-location-dot"></i> Lokasi
       </a>
 
-      <!-- Footer -->
+      <!-- 🌍 Tambahan: Flag + Jumlah Pengunjung -->
+      <div class="visitor-info">
+        <div id="flag-container">🌐 Mengambil data negara...</div>
+        <div>Total Pengunjung: <span id="visitor-count">0</span></div>
+      </div>
+
       <div class="footer">
-      <p><b>by IT RSHA Tebuireng</b></p>
+        <p><b>by IT RSHA Tebuireng</b></p>
       </div>
     </div>
   </div>
+
+  <script>
+    function copyText(event) {
+      event.preventDefault();
+      const textToCopy = "03213088030";
+      navigator.clipboard.writeText(textToCopy)
+        .then(() => alert("Nomor berhasil disalin: " + textToCopy))
+        .catch(err => console.error("Gagal menyalin teks:", err));
+    }
+
+    // 🌍 Ambil data negara pengunjung
+    fetch('https://ipapi.co/json/')
+      .then(res => res.json())
+      .then(data => {
+        const countryName = data.country_name;
+        const countryCode = data.country_code.toLowerCase();
+        document.getElementById("flag-container").innerHTML =
+          `<img src="https://flagcdn.com/24x18/${countryCode}.png"> Anda dari <b>${countryName}</b>`;
+      })
+      .catch(() => {
+        document.getElementById("flag-container").innerText = "Gagal memuat data negara.";
+      });
+
+    // 🔢 Hitung total pengunjung (CountAPI)
+    //fetch('https://api.countapi.xyz/hit/rshatebuireng/visitorcount')
+   fetch('https://api.countapi.xyz/hit/dashboardrsha/visitorcount')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("visitor-count").textContent = data.value;
+      });
+  </script>
 </body>
-    <script>
-            function copyText(event) {
-              event.preventDefault(); // Cegah link membuka halaman baru
-              const textToCopy = "03213088030";
-            
-              navigator.clipboard.writeText(textToCopy)
-                .then(() => {
-                  alert("Nomor berhasil disalin: " + textToCopy);
-                })
-                .catch(err => {
-                  console.error("Gagal menyalin teks:", err);
-                });
-            }
-    </script>
 </html>
-
-
-
-
-
-
-
