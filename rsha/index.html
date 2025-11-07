@@ -263,9 +263,7 @@
       <a href="https://maps.app.goo.gl/3kSM5VbqRNQEDLLK6" class="linktree-btn">
         <i class="fa-solid fa-location-dot"></i> Lokasi
       </a>
-<a href="https://maps.app.goo.gl/3kSM5VbqRNQEDLLK6" class="linktree-btn">
-  <i class="fa-solid fa-location-dot"></i> Lokasi
-</a>
+
 <!-- 🌍 Visitor Info -->
 <div class="visitor-info">
   <div id="flag-container">🌐 Mengambil data negara...</div>
@@ -299,7 +297,8 @@
         // =========================
   // 🔹 2. Tampilkan Negara Pengunjung
   // =========================
-  fetch('https://ipapi.co/json/')
+  //fetch('https://ipapi.co/json/')
+        fetch('https://ipinfo.io/json?token=5e3b2b4e9bde9f') 
     .then(res => res.json())
     .then(data => {
       const countryName = data.country_name;
@@ -311,36 +310,44 @@
       document.getElementById("flag-container").innerText = "Gagal memuat data negara.";
     });
 
-  // =========================
-  // 🔹 3. Hitung Pengunjung Unik (pakai localStorage)
-  // =========================
-  const namespace = "dashboardrsha";  // Ganti sesuai nama unik situsmu
-  const key = "visitorcount";
 
-  if (!localStorage.getItem("hasVisited")) {
-    // Pengunjung baru — tambah +1
-    fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
-      .then(res => res.json())
-      .then(data => {
-        document.getElementById("visitor-count").textContent = data.value;
-        localStorage.setItem("hasVisited", "true");
-      })
-      .catch(() => {
-        document.getElementById("visitor-count").textContent = "Error";
-      });
-  } else {
-    // Sudah pernah berkunjung — ambil angka saja
-    fetch(`https://api.countapi.xyz/get/${namespace}/${key}`)
-      .then(res => res.json())
-      .then(data => {
-        document.getElementById("visitor-count").textContent = data.value;
-      })
-      .catch(() => {
-        document.getElementById("visitor-count").textContent = "Error";
-      });
-  }
+// 🔹 3. Hitung Pengunjung Unik (pakai localStorage)
+// =========================
+const namespace = "dashboard-rsha";  // Ganti sesuai nama unik situsmu
+const key = "visitorcount";
+
+function updateVisitorCount() {
+  fetch(`https://api.countapi.xyz/get/${dashboard-rsha}/${key}`)
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById("visitor-count").textContent = data.value;
+    })
+    .catch(() => {
+      document.getElementById("visitor-count").textContent = "Error";
+    });
+}
+
+if (!localStorage.getItem("hasVisited")) {
+  // Pengunjung baru — tambah +1 (dan buat key jika belum ada)
+  fetch(`https://api.countapi.xyz/hit/${dashboard-rsha}/${key}`)
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById("visitor-count").textContent = data.value;
+      localStorage.setItem("hasVisited", "true");
+    })
+    .catch(() => {
+      // Jika belum ada key-nya, buat manual
+      fetch(`https://api.countapi.xyz/create?namespace=${dashboard-rsha}&key=${key}&value=1`)
+        .then(() => updateVisitorCount());
+    });
+} else {
+  // Sudah pernah berkunjung — ambil angka saja
+  updateVisitorCount();
+}
+
     </script>
 </html>
+
 
 
 
