@@ -298,17 +298,17 @@
   // 🔹 2. Tampilkan Negara Pengunjung
   // =========================
   //fetch('https://ipapi.co/json/')
-        fetch('https://ipinfo.io/json?token=5e3b2b4e9bde9f') 
-    .then(res => res.json())
-    .then(data => {
-      const countryName = data.country_name;
-      const countryCode = data.country_code.toLowerCase();
-      document.getElementById("flag-container").innerHTML =
-        `<img src="https://flagcdn.com/24x18/${countryCode}.png"> Anda dari <b>${countryName}</b>`;
-    })
-    .catch(() => {
-      document.getElementById("flag-container").innerText = "Gagal memuat data negara.";
-    });
+fetch('https://ipwhois.app/json/')
+  .then(res => res.json())
+  .then(data => {
+    const countryName = data.country || "Unknown";
+    const countryCode = data.country_code ? data.country_code.toLowerCase() : "un";
+    document.getElementById("flag-container").innerHTML =
+      `<img src="https://flagcdn.com/24x18/${countryCode}.png"> Anda dari <b>${countryName}</b>`;
+  })
+  .catch(() => {
+    document.getElementById("flag-container").innerText = "Gagal memuat data negara.";
+  });
 
 
 // 🔹 3. Hitung Pengunjung Unik (pakai localStorage)
@@ -347,6 +347,7 @@ if (!localStorage.getItem("hasVisited")) {
 
     </script>
 </html>
+
 
 
 
