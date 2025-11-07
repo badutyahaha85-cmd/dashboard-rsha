@@ -200,7 +200,6 @@
 </head>
 <body>
   <div class="card">
-    <!-- Tombol Pengaturan -->
       <!-- Konten Utama -->
     <div class="content">
       <!-- Logo -->
@@ -209,11 +208,11 @@
           <img src="./logo.png" alt="Logo RSHAjombang">
         </div>
       </div>
-
-      <!-- Nama Rumah Sakit -->
       <h1 class="hospital-name">RS HASYIM ASY'ARI TEBUIRENG</h1>
 
-      <!-- Tombol Sosial Media -->
+      <a href="#" class="copy-btn" onclick="copyText(event)">
+          <i class="fa-solid fa-phone"></i> 03213088030
+        </a>
       <a href="https://api.whatsapp.com/send?phone=6282139748501&text=" class="instagram-btn">
         <i class="fa-brands fa-whatsapp"></i> WhatsApp
       </a>
@@ -252,7 +251,22 @@
     </div>
   </div>
 </body>
+    <script>
+            function copyText(event) {
+              event.preventDefault(); // Cegah link membuka halaman baru
+              const textToCopy = "03213088030";
+            
+              navigator.clipboard.writeText(textToCopy)
+                .then(() => {
+                  alert("Nomor berhasil disalin: " + textToCopy);
+                })
+                .catch(err => {
+                  console.error("Gagal menyalin teks:", err);
+                });
+            }
+    </script>
 </html>
+
 
 
 
