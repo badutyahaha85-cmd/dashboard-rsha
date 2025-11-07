@@ -312,32 +312,28 @@ function updateVisitorCount() {
     });
 }
 
-function hitVisitor() {
-  fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
-    .then(res => res.json())
-    .then(data => {
-      document.getElementById("visitor-count").textContent = data.value;
-      localStorage.setItem("hasVisited", "true");
-    })
-    .catch(() => {
-      // jika key belum ada, buat key baru dulu
-      fetch(`https://api.countapi.xyz/create?namespace=${namespace}&key=${key}&value=1`)
-        .then(res => res.json())
-        .then(() => updateVisitorCount());
-    });
-}
-
-// Cek localStorage
-if (!localStorage.getItem("hasVisited")) {
-  hitVisitor();
-} else {
-  updateVisitorCount();
-}
-
+     function hitVisitor() {
+       fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
+         .then(res => res.json())
+         .then(data => {
+           document.getElementById("visitor-count").textContent = data.value;
+           localStorage.setItem("hasVisited", "true");
+         })
+         .catch(() => {
+           console.log("CountAPI failed, falling back to local counter.");
+           // Fallback: Use localStorage for a simple counter
+           let count = parseInt(localStorage.getItem("localVisitorCount") || "0") + 1;
+           localStorage.setItem("localVisitorCount", count);
+           document.getElementById("visitor-count").textContent = count;
+           localStorage.setItem("hasVisited", "true");
+         });
+     }
+     
 
 
     </script>
 </html>
+
 
 
 
