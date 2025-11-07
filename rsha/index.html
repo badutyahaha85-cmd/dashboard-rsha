@@ -310,14 +310,11 @@ fetch('https://ipwhois.app/json/')
     document.getElementById("flag-container").innerText = "Gagal memuat data negara.";
   });
 
-
-// 🔹 3. Hitung Pengunjung Unik (pakai localStorage)
-// =========================
-const namespace = "dashboard-rsha";  // Ganti sesuai nama unik situsmu
+const namespace = "dashboard-rsha";  // nama unik situs
 const key = "visitorcount";
 
 function updateVisitorCount() {
-  fetch(`https://api.countapi.xyz/get/${dashboard-rsha}/${key}`)
+  fetch(`https://api.countapi.xyz/get/${namespace}/${key}`)
     .then(res => res.json())
     .then(data => {
       document.getElementById("visitor-count").textContent = data.value;
@@ -328,25 +325,24 @@ function updateVisitorCount() {
 }
 
 if (!localStorage.getItem("hasVisited")) {
-  // Pengunjung baru — tambah +1 (dan buat key jika belum ada)
-  fetch(`https://api.countapi.xyz/hit/${dashboard-rsha}/${key}`)
+  fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
     .then(res => res.json())
     .then(data => {
       document.getElementById("visitor-count").textContent = data.value;
       localStorage.setItem("hasVisited", "true");
     })
     .catch(() => {
-      // Jika belum ada key-nya, buat manual
-      fetch(`https://api.countapi.xyz/create?namespace=${dashboard-rsha}&key=${key}&value=1`)
+      fetch(`https://api.countapi.xyz/create?namespace=${namespace}&key=${key}&value=1`)
         .then(() => updateVisitorCount());
     });
 } else {
-  // Sudah pernah berkunjung — ambil angka saja
   updateVisitorCount();
 }
 
+
     </script>
 </html>
+
 
 
 
