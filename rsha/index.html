@@ -197,6 +197,23 @@
             }
         }
 
+/* 🌍 Visitor Info */
+.visitor-info {
+  margin-top: 15px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 10px;
+  padding: 8px 14px;
+  text-align: center;
+  color: white;
+  font-size: 13px;
+}
+
+.visitor-info img {
+  vertical-align: middle;
+  width: 20px;
+  height: 14px;
+  margin-right: 6px;
+}
 
        
     </style>
@@ -246,6 +263,14 @@
       <a href="https://maps.app.goo.gl/3kSM5VbqRNQEDLLK6" class="linktree-btn">
         <i class="fa-solid fa-location-dot"></i> Lokasi
       </a>
+<a href="https://maps.app.goo.gl/3kSM5VbqRNQEDLLK6" class="linktree-btn">
+  <i class="fa-solid fa-location-dot"></i> Lokasi
+</a>
+<!-- 🌍 Visitor Info -->
+<div class="visitor-info">
+  <div id="flag-container">🌐 Mengambil data negara...</div>
+  <div>Total Pengunjung: <span id="visitor-count">0</span></div>
+</div>
 
       <!-- Footer -->
       <div class="footer">
@@ -267,8 +292,56 @@
                   console.error("Gagal menyalin teks:", err);
                 });
             }
+
+
+
+
+        // =========================
+  // 🔹 2. Tampilkan Negara Pengunjung
+  // =========================
+  fetch('https://ipapi.co/json/')
+    .then(res => res.json())
+    .then(data => {
+      const countryName = data.country_name;
+      const countryCode = data.country_code.toLowerCase();
+      document.getElementById("flag-container").innerHTML =
+        `<img src="https://flagcdn.com/24x18/${countryCode}.png"> Anda dari <b>${countryName}</b>`;
+    })
+    .catch(() => {
+      document.getElementById("flag-container").innerText = "Gagal memuat data negara.";
+    });
+
+  // =========================
+  // 🔹 3. Hitung Pengunjung Unik (pakai localStorage)
+  // =========================
+  const namespace = "dashboardrsha";  // Ganti sesuai nama unik situsmu
+  const key = "visitorcount";
+
+  if (!localStorage.getItem("hasVisited")) {
+    // Pengunjung baru — tambah +1
+    fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("visitor-count").textContent = data.value;
+        localStorage.setItem("hasVisited", "true");
+      })
+      .catch(() => {
+        document.getElementById("visitor-count").textContent = "Error";
+      });
+  } else {
+    // Sudah pernah berkunjung — ambil angka saja
+    fetch(`https://api.countapi.xyz/get/${namespace}/${key}`)
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("visitor-count").textContent = data.value;
+      })
+      .catch(() => {
+        document.getElementById("visitor-count").textContent = "Error";
+      });
+  }
     </script>
 </html>
+
 
 
 
