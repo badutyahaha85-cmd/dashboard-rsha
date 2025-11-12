@@ -197,6 +197,43 @@
             }
         }
 
+
+
+
+
+
+        
+        .social-container {
+      display: flex;
+      gap: 20px;
+    }
+
+    .social-container a {
+      width: 60px;
+      height: 60px;
+      background-color: #ddd;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 28px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    /* Warna tombol spesifik */
+    .instagramm-btn { background: #E4405F; }
+    .facebookk-btn { background: #1877F2; }
+    .twitterr-btn { background: #1DA1F2; }
+    .whatsappp-btn { background: #25D366; }
+
+    /* Efek hover */
+    .social-container a:hover {
+      transform: scale(1.1);
+      opacity: 0.9;
+    }
+
 /* 🌍 Visitor Info */
 .visitor-info {
   margin-top: 15px;
@@ -246,7 +283,7 @@
       </a>
 
       <a href="https://www.instagram.com/rs.hasyimasyari/?hl=en" class="instagram-btn">
-        <i class="fa-brands fa-instagram"></i> Instagram
+        <i class="fa-brands fa-instagram"></i> 
       </a>
 
       <a href="https://www.facebook.com/rs.hasyimasyari" class="instagram-btn">
@@ -275,6 +312,20 @@
       <p><b>by IT RSHA Tebuireng</b></p>
       </div>
     </div>
+       <div class="social-container">
+    <a href="https://www.instagram.com/rs.hasyimasyari/?hl=en" class="instagram-btn" target="_blank">
+      <i class="fa-brands fa-instagram"></i>
+    </a>
+    <a href="https://facebook.com" class="facebook-btn" target="_blank">
+      <i class="fa-brands fa-facebook-f"></i>
+    </a>
+    <a href="https://twitter.com" class="twitter-btn" target="_blank">
+      <i class="fa-brands fa-x-twitter"></i>
+    </a>
+    <a href="https://wa.me/6281234567890" class="whatsapp-btn" target="_blank">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+  </div>
   </div>
 </body>
     <script>
@@ -333,6 +384,7 @@ function updateVisitorCount() {
 
     </script>
 </html>
+
 
 
 
